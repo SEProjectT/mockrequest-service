@@ -8,19 +8,18 @@ import requesting_service.dto.MessageDto
 import requesting_service.dto.ScheduledMessageDto
 import requesting_service.service.KafkaProducer
 import requesting_service.service.RequestService
-import requesting_service.util.KafkaTopics
 
 @Service
 @Transactional(readOnly = true)
-class RequestServiceImpl(@Autowired val kafkaProducer: KafkaProducer, val kafkaTopics: KafkaTopics): RequestService {
+class RequestServiceImpl(@Autowired val kafkaProducer: KafkaProducer): RequestService {
 
     @Transactional
     override fun sendMessage(messageDto: MessageDto): Mono<Void> {
-        return kafkaProducer.produce(kafkaTopics.topicImmediate, messageDto)
+        return kafkaProducer.produce("\${topic.immediate}", messageDto)
     }
 
     @Transactional
     override fun sendScheduledMessage(scheduledMessageDto: ScheduledMessageDto): Mono<Void> {
-        return kafkaProducer.produce(kafkaTopics.topicScheduled, scheduledMessageDto)
+        return kafkaProducer.produce("\${topic.scheduled}", scheduledMessageDto)
     }
 }

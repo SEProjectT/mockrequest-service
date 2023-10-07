@@ -28,16 +28,9 @@ dependencies {
 	/**
 	 * Spring boot starters
 	 */
-	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework:spring-jdbc")
-
-	/**
-	 * Database
-	 */
-	implementation("org.liquibase:liquibase-core:4.24.0")
-	runtimeOnly("org.postgresql:postgresql")
-	runtimeOnly("org.postgresql:r2dbc-postgresql")
+	implementation("org.springframework.kafka:spring-kafka:3.0.11")
 
 	/**
 	 * Test containers

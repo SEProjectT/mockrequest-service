@@ -13,7 +13,7 @@ import requesting_service.service.RequestService
 class RequestController(@Autowired val requestService: RequestService) {
 
     @PostMapping("/immediate")
-    fun sendMessage(@Valid @RequestBody messageDto: MessageDto): Mono<Void> { // TODO: надо еще в user service сходить проверить на null
+    fun sendMessage(@Valid @RequestBody messageDto: MessageDto): Mono<Void> {
         return requestService.sendMessage(messageDto)
     }
 

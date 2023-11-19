@@ -6,10 +6,10 @@ import java.time.LocalDateTime
 
 data class MessageDto(
 
-    @NotNull
+    @NotNull(message = "List of receiver ids can't be null")
     val receiverIds: List<Long>,
 
-    @NotBlank
+    @NotBlank(message = "Message can't be blank")
     val message: String,
 
     val scheduledAt: LocalDateTime?
